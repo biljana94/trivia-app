@@ -3,6 +3,9 @@
         <router-link class="navbar-brand" :to="{ name: 'trivia-app' }">
             Trivia App
         </router-link>
+        <router-link class="navbar-brand" :to="{ name: 'chuck-joke' }">
+            Chuck Joke
+        </router-link>
     </nav>
 </template>
 

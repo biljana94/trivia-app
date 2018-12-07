@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import App from './App.vue';
+import Vuex from 'vuex';
 
 import { router } from './router.js';
 
@@ -8,6 +9,8 @@ import { chuckStore } from './stores/ChuckStore.js';
 import { triviaStore } from './stores/TriviaStore.js';
 
 Vue.config.productionTip = false;
+
+Vue.use(Vuex);
 
 const store = new Vuex.Store({
   //naveli smo store u module koji ce da nam spoje ova dva stora
