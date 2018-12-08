@@ -6,16 +6,27 @@ import { chuckService } from '../services/ChuckService.js';
 export const chuckStore = {
     state: {
         joke: '',
+        categories: [],
     },
 
     actions: {
         //asinhrona akcija
         //pozivamo metodu iz servisa i pisemo promise
-        async joke({ commit }) {
+        async joke({ commit }, categ) {
             // console.log('bdjb')
             try {
-                const response = await chuckService.getRandomJoke();
-                commit('JOKE', response);
+                const response = await chuckService.getRandomJoke(categ);
+                commit('JOKE', response.value); //u commitu pisemo mutaciju i response
+            } catch(error) {
+                console.log(error);
+            }
+        },
+
+
+        async jokesCategories({ commit }) {
+            try {
+                const response = await chuckService.getJokeCategories();
+                commit('JOKES_CATEGORIES', response);
             } catch(error) {
                 console.log(error);
             }
@@ -26,10 +37,16 @@ export const chuckStore = {
         //preko mutacije menjamo akciju
         JOKE(state, joke) {
             state.joke = joke;
+        },
+
+        JOKES_CATEGORIES(state, category) {
+            state.categories = category;
         }
     },
 
     getters: {
         randomJoke: state => state.joke,
+        categories: state => state.categories,
+
     },
 };
