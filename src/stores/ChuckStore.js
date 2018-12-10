@@ -2,7 +2,7 @@
 import { chuckService } from '../services/ChuckService.js';
 
 
-//exportovali smo store i naveli smo state{} u kojem cemo pisati akcije
+//exportovali smo store i naveli smo state{}
 export const chuckStore = {
     state: {
         joke: '',

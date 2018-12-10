@@ -2,15 +2,15 @@
     <div class="default">
 
 
-        <div class="card text-center">
+        <div class="card text-center border-success">
 
-            <div class="card-header">
+            <div class="card-header border-success">
                 Chuck Norris Jokes
             </div>
 
             <div class="card-body">
                 <img src="https://www.stayathomemum.com.au/cache/860x380-0/wp-content/uploads/2017/03/chuck-norris-e1496034814125.jpg"/>
-                <h5 class="card-title">{{ randomJoke }}</h5>
+                <h5 class="card-title text-success">{{ randomJoke }}</h5>
                 <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a> -->
                 <p>More Jokes...</p>
@@ -30,7 +30,7 @@
                 </div>
             </div>
 
-            <div class="card-footer text-muted">
+            <div class="card-footer text-muted border-success">
                 Chuck bless you!
             </div>
 
@@ -99,7 +99,7 @@ export default {
 .default .card .card-body .card-title {
     margin: 2rem 0;
     padding: 0.5rem;
-    border: 1px solid #343a40;
+    border: 1px solid #28a745;
     border-radius: 0.3rem;
 }
 
