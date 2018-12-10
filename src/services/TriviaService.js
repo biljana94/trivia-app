@@ -8,7 +8,8 @@ class TriviaService {
 
     getRandomTrivies() {
         // console.log('fdsfds')
-        return axios.get('random/', { params: { count:30 } }); //dovlacimo 30 random trivia
+        return axios.get('random/', { params: { count:30 } })
+            .then((response) => response.data); //dovlacimo 30 random trivia
     }
 }
 

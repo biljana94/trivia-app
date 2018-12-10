@@ -54,9 +54,10 @@ export default {
     beforeRouteEnter(to, from, next) {
         next(vm => {
             // console.log('sdfsdf')
-            vm.$store.dispatch('joke');
-            // vm.joke;
-            vm.$store.dispatch('jokesCategories');
+            // vm.$store.dispatch('joke');
+            vm.joke();
+            // vm.$store.dispatch('jokesCategories');
+            vm.jokesCategories();
         })
     },
 

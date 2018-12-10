@@ -13,7 +13,7 @@ export const triviaStore = {
             try {
                 // console.log('dsfs')
                 const response = await triviaService.getRandomTrivies();
-                commit('TRIVIES', response.data); //mora response.data
+                commit('TRIVIES', response); //mora response.data
             } catch(error) {
                 console.log(error);
             }
