@@ -16,7 +16,7 @@ export const chuckStore = {
             // console.log('bdjb')
             try {
                 const response = await chuckService.getRandomJoke(categ);
-                commit('JOKE', response.value); //u commitu pisemo mutaciju i response
+                commit('SET_JOKE', response.value); //u commitu pisemo mutaciju i response
             } catch(error) {
                 console.log(error);
             }
@@ -26,7 +26,7 @@ export const chuckStore = {
         async jokesCategories({ commit }) {
             try {
                 const response = await chuckService.getJokeCategories();
-                commit('JOKES_CATEGORIES', response);
+                commit('SET_JOKES_CATEGORIES', response);
             } catch(error) {
                 console.log(error);
             }
@@ -35,18 +35,18 @@ export const chuckStore = {
 
     mutations: {
         //preko mutacije menjamo akciju
-        JOKE(state, joke) {
+        SET_JOKE(state, joke) {
             state.joke = joke;
         },
 
-        JOKES_CATEGORIES(state, category) {
+        SET_JOKES_CATEGORIES(state, category) {
             state.categories = category;
         }
     },
 
     getters: {
         randomJoke: state => state.joke,
-        categories: state => state.categories,
+        getCategories: state => state.categories,
 
     },
 };

@@ -22,7 +22,9 @@
                             <!-- <input v-model="jokeCategory" type="text" class="form-control" placeholder="Enter category joke"> -->
                             <select v-model="jokeCategory" class="form-control">
                                 <!--getter nam vraca 'categories' i mi uzimamo 'category' i ispisujemo je-->
-                                <option v-for="category in categories" :key="category.id">{{ category }}</option>
+                                <option v-for="category in getCategories" :key="category.id" :value="category">
+                                    {{ category }}
+                                </option>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-outline-primary">Get New Joke</button>
@@ -75,7 +77,7 @@ export default {
         // }
         ...mapGetters([
             'randomJoke',
-            'categories',
+            'getCategories',
         ]),
 
 
