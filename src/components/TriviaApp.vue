@@ -1,19 +1,39 @@
 <template>
     <div class="default">
         
-        <div class="card">
-            <div class="card-header">
-                Trivia Questions and Answers
+        <div class="card border-dark">
+            <div class="card-header border-dark">
+
+                Questions and Answers
+                <hr>
+
+                <div class="row justify-content-md-center">
+                    <form @submit.prevent="triviaByCategory(triviaCategory)">
+                        <div class="form-group">
+                            <label>Select Trivies Category</label>
+                            <select v-model="triviaCategory" class="form-control">
+                                <!--getter nam vraca 'categories' i mi uzimamo 'category' i ispisujemo je-->
+                                <option v-for="category in getTriviaCategories" :key="category.id" :value="category">
+                                    {{ category.title }}
+                                </option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-outline-primary">Get New Trivies</button>
+                    </form>
+                </div>
+                
             </div>
+
             <div class="card-body" v-for="trivia in getTrivies" :key="trivia.id">
                 <blockquote class="blockquote mb-0">
-                    <p>{{ trivia.question }}?</p>
-                    <footer v-show="isTriviaExpanded(trivia)" class="blockquote-footer">Answer: {{ trivia.answer }}</footer>
+                    <p class="text-primary">{{ trivia.question }}?</p>
+                    <p v-show="isTriviaExpanded(trivia)">{{ trivia.answer }}</p>
                     <button @click="toggleTrivia(trivia)" type="button" class="btn btn-outline-dark">Show Answer</button>
                 </blockquote>
             </div>
+
         </div>
-{{JSON.stringify(getTrivies)}}
+        <!-- {{JSON.stringify(getTrivies)}} -->
     </div>
 </template>
 
@@ -25,28 +45,38 @@ export default {
     data() {
         return {
             expandedTriviaIds: [],
+            triviaCategory: {},
         }
     },
     //
     created() {
         // console.log('dssds')
-        this.$store.dispatch('randomTrivies');
+        // this.$store.dispatch('randomTrivies');
+        // this.$store.dispatch('triviaCategories');
+        this.randomTrivies();
+        this.getCategories();
     },    
 
     //u metodu se mapiraju akcije
     methods: {
         ...mapActions([
             'randomTrivies',
+            'getCategories',
+            'triviaByCategory',
         ]),
 
-        //ovo smo pozvali na v-show
+        //ovo smo pozvali na v-show, da li je trivia prikazana ili nije
         toggleTrivia(trivia) {
+            //u let stavljamo svaki index od trivia koje prosledjujemo pomocu id; 
             let expandedTriviaIndex = this.expandedTriviaIds.indexOf(trivia.id);
+            //ako je index svake trivie >=0
             if (expandedTriviaIndex >= 0) {
+                //izbaci jednu triviu iz niza
                 this.expandedTriviaIds.splice(expandedTriviaIndex, 1);
-                return;
+                return; //izadji iz fnc
             }
-            this.expandedTriviaIds.push(trivia.id)
+            //u suprotnom dodaj triviu u niz expandedTriviaIds [] koji smo naveli u data(){return{}}
+            this.expandedTriviaIds.push(trivia.id);
         },
 
         //ovo sam pozvala na button
@@ -59,6 +89,7 @@ export default {
     computed: {
         ...mapGetters([
             'getTrivies',
+            'getTriviaCategories',
         ]),
     },
 }

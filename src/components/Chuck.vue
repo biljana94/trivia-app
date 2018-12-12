@@ -2,15 +2,15 @@
     <div class="default">
 
 
-        <div class="card text-center border-success">
+        <div class="card text-center border-primary">
 
-            <div class="card-header border-success">
+            <div class="card-header border-primary">
                 Chuck Norris Jokes
             </div>
 
             <div class="card-body">
                 <img src="https://www.stayathomemum.com.au/cache/860x380-0/wp-content/uploads/2017/03/chuck-norris-e1496034814125.jpg"/>
-                <h5 class="card-title text-success">{{ randomJoke }}</h5>
+                <h5 class="card-title text-primary">{{ randomJoke }}</h5>
                 <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a> -->
                 <p>More Jokes...</p>
@@ -25,12 +25,12 @@
                                 <option v-for="category in categories" :key="category.id">{{ category }}</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-outline-dark">Get New Joke</button>
+                        <button type="submit" class="btn btn-outline-primary">Get New Joke</button>
                     </form>
                 </div>
             </div>
 
-            <div class="card-footer text-muted border-success">
+            <div class="card-footer text-muted border-primary">
                 Chuck bless you!
             </div>
 
@@ -55,7 +55,7 @@ export default {
         next(vm => {
             // console.log('sdfsdf')
             // vm.$store.dispatch('joke');
-            vm.joke();
+            vm.joke(); //ne treba mi dispatch ako mapiram akcije i gettere
             // vm.$store.dispatch('jokesCategories');
             vm.jokesCategories();
         })
@@ -100,7 +100,7 @@ export default {
 .default .card .card-body .card-title {
     margin: 2rem 0;
     padding: 0.5rem;
-    border: 1px solid #28a745;
+    border: 1px solid #007bff;
     border-radius: 0.3rem;
 }
 
